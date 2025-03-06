@@ -20,7 +20,7 @@ def update_event(event_text):
 
 root = tk.Tk()
 root.title("Event Panel")
-root.geometry("400x200")
+root.geometry("300x150")
 root.resizable(False, False)
 root.attributes('-topmost', True)
 
@@ -45,11 +45,12 @@ for i, (main_color, active_color, pressed_color) in enumerate(colors):
     style.configure(
         f'Color{i}.TButton',
         font=('Arial', 10),
-        padding=5,
+        padding=2,
         background=main_color,
         foreground='white',
         borderwidth=1,
         relief='raised'
+
     )
     style.map(
         f'Color{i}.TButton',
@@ -57,7 +58,7 @@ for i, (main_color, active_color, pressed_color) in enumerate(colors):
     )
 
 # Create a main container with grid layout
-main_frame = ttk.Frame(root, padding="10", style='TFrame')
+main_frame = ttk.Frame(root, padding="5", style='TFrame')
 main_frame.grid(row=0, column=0, sticky="nsew")
 
 # Configure grid weights
@@ -72,7 +73,7 @@ for i, event in enumerate(events):
     col = i % 3
     color_index = i if i >= 3 else col  # Use different indices for bottom row
     btn = ttk.Button(main_frame, text=event, style=f'Color{color_index}.TButton', command=lambda e=event: update_event(e))
-    btn.grid(row=row, column=col, padx=5, pady=5, sticky="nsew")
+    btn.grid(row=row, column=col, padx=2, pady=2, sticky="nsew")
     main_frame.grid_columnconfigure(col, weight=1)
     main_frame.grid_rowconfigure(row, weight=1)
 
